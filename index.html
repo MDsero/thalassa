@@ -57,446 +57,185 @@
   <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
 </section>
 
-<!-- ============ FLEET ============ -->
-<section id="fleet" class="section">
-  <div class="parallax-blob blob-brass" data-speed="0.18"></div>
-  <div class="parallax-blob blob-teal" data-speed="0.32"></div>
-  <div class="section-inner">
-    <div class="section-head reveal">
-      <div class="eyebrow">The Collection</div>
-      <h2>Five disciplines. One obsession with the sea.</h2>
-      <p>Every vessel we lay a hull for begins as a conversation about how you want to feel on the water. Select a category to explore the range.</p>
+<style>
+  #vessel-showcase{
+    position: relative;
+    height: 600vh;
+    background: linear-gradient(180deg, var(--abyss) 0%, var(--abyss-2) 100%);
+  }
+  #vessel-showcase .vs-stage{
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+  }
+  #vessel-showcase canvas{
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+  #vessel-showcase .vs-heading{
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 5;
+    pointer-events: none;
+  }
+  #vessel-showcase .vs-heading .eyebrow{ margin-bottom: 14px; }
+  #vessel-showcase .vs-heading h2{
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+    color: var(--foam);
+    margin: 0;
+  }
+  #vessel-showcase .vs-heading h2 em{
+    font-style: italic;
+    color: var(--brass-2);
+  }
+  #vessel-showcase .hud{
+    position: absolute;
+    z-index: 6;
+    width: 210px;
+    padding: 16px 18px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-brd);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  #vessel-showcase .hud::before,
+  #vessel-showcase .hud::after{
+    content:'';
+    position:absolute;
+    width:11px; height:11px;
+    border-color: var(--brass-2);
+    border-style: solid;
+  }
+  #vessel-showcase .hud::before{ top:-1px; left:-1px; border-width:2px 0 0 2px; }
+  #vessel-showcase .hud::after{ bottom:-1px; right:-1px; border-width:0 2px 2px 0; }
+  #vessel-showcase .hud .label{
+    font-family: var(--font-body);
+    font-size: 11.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brass-2);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  #vessel-showcase .hud .value{
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--foam);
+    line-height: 1;
+  }
+  #vessel-showcase .hud .unit{
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--silver);
+    margin-left: 5px;
+  }
+  #vessel-showcase .hud-a1{ top: 24%; left: 7%; }
+  #vessel-showcase .hud-a2{ top: 42%; right: 7%; }
+  #vessel-showcase .hud-a3{ bottom: 28%; left: 9%; }
+  #vessel-showcase .hud-a4{ bottom: 16%; right: 9%; }
+  #vessel-showcase .hud-b1{ top: 24%; right: 7%; }
+  #vessel-showcase .hud-b2{ top: 42%; left: 7%; }
+  #vessel-showcase .hud-b3{ bottom: 28%; right: 9%; }
+  #vessel-showcase .hud-b4{ bottom: 16%; left: 9%; }
+  #vessel-showcase .vs-progress{
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 5;
+  }
+  #vessel-showcase .vs-progress span{
+    width: 34px; height: 2px;
+    background: var(--silver-dim);
+    position: relative;
+    overflow: hidden;
+  }
+  #vessel-showcase .vs-progress span i{
+    position: absolute; inset: 0;
+    background: var(--brass-2);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  @media (prefers-reduced-motion: reduce){
+    #vessel-showcase .hud{ transition: none !important; }
+  }
+</style>
+
+<!-- ============ VESSEL SHOWCASE ============ -->
+<section id="vessel-showcase">
+  <div class="vs-stage">
+    <canvas id="vs-canvas"></canvas>
+    <div class="vs-heading" id="vs-heading">
+      <div class="eyebrow">Vessel Profile — <span id="vs-eyebrow-tag">Performance</span></div>
+      <h2 id="vs-title">Velocity <em>38</em></h2>
     </div>
-
-    <div class="fleet-tabs reveal">
-      <button class="fleet-tab active" data-cat="all">All</button>
-      <button class="fleet-tab" data-cat="Luxury Yachts">Luxury Yachts</button>
-      <button class="fleet-tab" data-cat="Performance">Performance Speed Boats</button>
-      <button class="fleet-tab" data-cat="Fishing">Fishing Boats</button>
-      <button class="fleet-tab" data-cat="Catamarans">Catamarans</button>
-      <button class="fleet-tab" data-cat="Custom">Custom Projects</button>
-    </div>
-
-    <div class="fleet-grid">
-
-      <div class="boat-card reveal" data-cat="Luxury Yachts"
-           data-img="https://images.pexels.com/photos/6752179/pexels-photo-6752179.jpeg?auto=compress&cs=tinysrgb&w=1200"
-           data-name="Meridian 92" data-length="92 ft" data-speed="26 kn" data-guests="10 + 4 crew" data-price="$4.8M"
-           data-desc="A full-beam owner's suite, teak decks, and a silhouette drawn to disappear into any sunset. The Meridian 92 is our flagship expression of quiet power.">
-        <div class="bc-img" style="background-image:url('https://images.pexels.com/photos/6752179/pexels-photo-6752179.jpeg?auto=compress&cs=tinysrgb&w=1200')"></div>
-        <div class="bc-arrow">↗</div>
-        <div class="bc-content">
-          <span class="bc-tag">Luxury Yachts</span>
-          <h3>Meridian 92</h3>
-          <div class="bc-specs"><span>92 ft</span><span>·</span><span>26 kn</span><span>·</span><span>10 Guests</span></div>
-        </div>
-      </div>
-
-      <div class="boat-card reveal" data-cat="Performance"
-           data-img="https://images.pexels.com/photos/10955651/pexels-photo-10955651.jpeg?auto=compress&cs=tinysrgb&w=1200"
-           data-name="Velocis GTX" data-length="42 ft" data-speed="82 kn" data-guests="6" data-price="$890K"
-           data-desc="Carbon hull, triple turbine propulsion, and a cockpit built like a cockpit — not a lounge. The Velocis GTX exists to make open water feel small.">
-        <div class="bc-img" style="background-image:url('https://images.pexels.com/photos/10955651/pexels-photo-10955651.jpeg?auto=compress&cs=tinysrgb&w=1200')"></div>
-        <div class="bc-arrow">↗</div>
-        <div class="bc-content">
-          <span class="bc-tag">Performance</span>
-          <h3>Velocis GTX</h3>
-          <div class="bc-specs"><span>42 ft</span><span>·</span><span>82 kn</span><span>·</span><span>6 Guests</span></div>
-        </div>
-      </div>
-
-      <div class="boat-card reveal" data-cat="Fishing"
-           data-img="https://images.pexels.com/photos/3030045/pexels-photo-3030045.jpeg?auto=compress&cs=tinysrgb&w=1200"
-           data-name="Marlin 58 Sport" data-length="58 ft" data-speed="38 kn" data-guests="8" data-price="$1.6M"
-           data-desc="Purpose-built for the tournament angler, with a reinforced cockpit, tower helm, and enough range to chase the fleet to the canyon and back.">
-        <div class="bc-img" style="background-image:url('https://images.pexels.com/photos/3030045/pexels-photo-3030045.jpeg?auto=compress&cs=tinysrgb&w=1200')"></div>
-        <div class="bc-arrow">↗</div>
-        <div class="bc-content">
-          <span class="bc-tag">Fishing Boats</span>
-          <h3>Marlin 58 Sport</h3>
-          <div class="bc-specs"><span>58 ft</span><span>·</span><span>38 kn</span><span>·</span><span>8 Guests</span></div>
-        </div>
-      </div>
-
-      <div class="boat-card reveal" data-cat="Catamarans"
-           data-img="https://images.pexels.com/photos/27628884/pexels-photo-27628884.jpeg?auto=compress&cs=tinysrgb&w=1200"
-           data-name="Solara 70 Cat" data-length="70 ft" data-speed="22 kn" data-guests="12" data-price="$2.3M"
-           data-desc="Twin-hull stability meets villa-scale living space. The Solara 70 trades nothing for its calm ride and everything for its view.">
-        <div class="bc-img" style="background-image:url('https://images.pexels.com/photos/27628884/pexels-photo-27628884.jpeg?auto=compress&cs=tinysrgb&w=1200')"></div>
-        <div class="bc-arrow">↗</div>
-        <div class="bc-content">
-          <span class="bc-tag">Catamarans</span>
-          <h3>Solara 70 Cat</h3>
-          <div class="bc-specs"><span>70 ft</span><span>·</span><span>22 kn</span><span>·</span><span>12 Guests</span></div>
-        </div>
-      </div>
-
-      <div class="boat-card reveal" data-cat="Luxury Yachts"
-           data-img="https://images.pexels.com/photos/17860921/pexels-photo-17860921.jpeg?auto=compress&cs=tinysrgb&w=1200"
-           data-name="Aurelia 118" data-length="118 ft" data-speed="24 kn" data-guests="12 + 6 crew" data-price="$9.4M"
-           data-desc="A three-deck superyacht with a fold-out beach club and infinity-edge pool deck. The Aurelia 118 is a private island that happens to move.">
-        <div class="bc-img" style="background-image:url('https://images.pexels.com/photos/17860921/pexels-photo-17860921.jpeg?auto=compress&cs=tinysrgb&w=1200')"></div>
-        <div class="bc-arrow">↗</div>
-        <div class="bc-content">
-          <span class="bc-tag">Luxury Yachts</span>
-          <h3>Aurelia 118</h3>
-          <div class="bc-specs"><span>118 ft</span><span>·</span><span>24 kn</span><span>·</span><span>12 Guests</span></div>
-        </div>
-      </div>
-
-      <div class="boat-card reveal" data-cat="Custom"
-           data-img="https://images.pexels.com/photos/8356431/pexels-photo-8356431.jpeg?auto=compress&cs=tinysrgb&w=1200"
-           data-name="Bespoke Commission" data-length="Your Spec" data-speed="Your Spec" data-guests="Your Spec" data-price="On Request"
-           data-desc="Some clients don't want a model — they want a hull number one. Our custom division designs and builds from a blank sheet, in partnership with your team.">
-        <div class="bc-img" style="background-image:url('https://images.pexels.com/photos/8356431/pexels-photo-8356431.jpeg?auto=compress&cs=tinysrgb&w=1200')"></div>
-        <div class="bc-arrow">↗</div>
-        <div class="bc-content">
-          <span class="bc-tag">Custom Projects</span>
-          <h3>Bespoke Commission</h3>
-          <div class="bc-specs"><span>Fully Custom</span></div>
-        </div>
-      </div>
-
-    </div>
+    <div class="hud hud-a1" data-act="1"><div class="label">Top Speed</div><div class="value">52<span class="unit">kn</span></div></div>
+    <div class="hud hud-a2" data-act="1"><div class="label">Engine</div><div class="value">2×520<span class="unit">hp</span></div></div>
+    <div class="hud hud-a3" data-act="1"><div class="label">Hull</div><div class="value">Deep-V<span class="unit">carbon</span></div></div>
+    <div class="hud hud-a4" data-act="1"><div class="label">Capacity</div><div class="value">8<span class="unit">pax</span></div></div>
+    <div class="hud hud-b1" data-act="2"><div class="label">Cruising Speed</div><div class="value">22<span class="unit">kn</span></div></div>
+    <div class="hud hud-b2" data-act="2"><div class="label">Route Range</div><div class="value">180<span class="unit">nm</span></div></div>
+    <div class="hud hud-b3" data-act="2"><div class="label">Deck Config</div><div class="value">Dual<span class="unit">level</span></div></div>
+    <div class="hud hud-b4" data-act="2"><div class="label">Capacity</div><div class="value">240<span class="unit">pax</span></div></div>
+    <div class="vs-progress"><span><i></i></span><span><i></i></span></div>
   </div>
 </section>
 
-<!-- Boat Modal -->
-<div id="boat-modal">
-  <div class="modal-backdrop" data-close-modal></div>
-  <div class="modal-card glass">
-    <button class="modal-close" data-close-modal>✕</button>
-    <div class="modal-img"></div>
-    <div class="modal-info">
-      <span class="bc-tag"></span>
-      <h3></h3>
-      <p class="modal-desc"></p>
-      <div class="modal-specs"></div>
-      <a href="#contact" class="btn btn-primary" data-close-modal>Enquire About This Vessel</a>
-    </div>
-  </div>
-</div>
+<script>
+(function(){
+  const section = document.getElementById('vessel-showcase');
+  const canvas  = document.getElementById('vs-canvas');
+  const titleEl = document.getElementById('vs-title');
+  const tagEl   = document.getElementById('vs-eyebrow-tag');
 
-<!-- ============ CONFIGURATOR ============ -->
-<section id="configurator" class="section">
-  <div class="parallax-blob blob-brass" data-speed="0.22" style="top:10%; right:6%;"></div>
-  <div class="section-inner">
-    <div class="section-head reveal">
-      <div class="eyebrow">Build Your Dream Yacht</div>
-      <h2>Configure a Meridian, your way.</h2>
-      <p>Every option below shapes the final specification and estimate. A designer will refine it with you before any keel is laid.</p>
-    </div>
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    <div class="config-grid">
-      <div class="config-form reveal">
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x060c14, 0.032);
 
-        <div class="config-group" data-key="length">
-          <span class="cg-label">Hull Length</span>
-          <div class="config-options">
-            <button class="config-opt selected" data-value="48">48 ft</button>
-            <button class="config-opt" data-value="62">62 ft</button>
-            <button class="config-opt" data-value="78">78 ft</button>
-            <button class="config-opt" data-value="95">95 ft</button>
-          </div>
-        </div>
+  const camera = new THREE.PerspectiveCamera(36, 1, 0.1, 100);
+  camera.position.set(0, 2.4, 9);
 
-        <div class="config-group" data-key="engine">
-          <span class="cg-label">Engine</span>
-          <div class="engine-visual reveal">
-            <div class="engine-3d" id="engine3d">
-              <svg class="engine-core" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <rect x="52" y="72" width="96" height="86" rx="10" fill="none" stroke="var(--brass-2)" stroke-width="2"/>
-                <rect x="62" y="40" width="76" height="34" rx="9" fill="none" stroke="var(--brass-2)" stroke-width="2"/>
-                <circle cx="76" cy="57" r="6.5" fill="none" stroke="var(--foam)" stroke-width="1.4"/>
-                <circle cx="94" cy="57" r="6.5" fill="none" stroke="var(--foam)" stroke-width="1.4"/>
-                <circle cx="112" cy="57" r="6.5" fill="none" stroke="var(--foam)" stroke-width="1.4"/>
-                <circle cx="130" cy="57" r="6.5" fill="none" stroke="var(--foam)" stroke-width="1.4"/>
-                <circle cx="48" cy="112" r="16" fill="none" stroke="var(--foam)" stroke-width="1.6"/>
-                <circle cx="48" cy="112" r="4" fill="none" stroke="var(--foam)" stroke-width="1.2"/>
-                <line x1="48" y1="98" x2="48" y2="126" stroke="var(--foam)" stroke-width="1" opacity=".5"/>
-                <line x1="35" y1="112" x2="61" y2="112" stroke="var(--foam)" stroke-width="1" opacity=".5"/>
-                <path d="M148 100 Q172 100 172 124 L172 150" fill="none" stroke="var(--brass-2)" stroke-width="2"/>
-                <path d="M52 158 L40 172 M148 158 L160 172" fill="none" stroke="var(--brass-2)" stroke-width="2"/>
-                <rect x="66" y="86" width="68" height="10" rx="3" fill="none" stroke="var(--foam)" stroke-width="1" opacity=".55"/>
-                <rect x="66" y="102" width="68" height="10" rx="3" fill="none" stroke="var(--foam)" stroke-width="1" opacity=".55"/>
-              </svg>
+  function resize(){
+    const w = section.clientWidth || window.innerWidth;
+    const h = window.innerHeight;
+    renderer.setSize(w, h);
+    camera.aspect = w/h;
+    camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize', resize);
+  resize();
 
-              <svg class="engine-part part-a" data-part-speed="1.1" data-part-rot="220" viewBox="0 0 40 40">
-                <circle cx="20" cy="20" r="13" fill="none" stroke="var(--brass-2)" stroke-width="2"/>
-                <circle cx="20" cy="20" r="4" fill="none" stroke="var(--brass-2)" stroke-width="2"/>
-                <g stroke="var(--brass-2)" stroke-width="2"><line x1="20" y1="3" x2="20" y2="9"/><line x1="20" y1="31" x2="20" y2="37"/><line x1="3" y1="20" x2="9" y2="20"/><line x1="31" y1="20" x2="37" y2="20"/></g>
-              </svg>
-              <svg class="engine-part part-b" data-part-speed="0.85" data-part-rot="-160" viewBox="0 0 40 40">
-                <path d="M20 4 L34 12 L34 28 L20 36 L6 28 L6 12 Z" fill="none" stroke="var(--foam)" stroke-width="2"/>
-                <circle cx="20" cy="20" r="6" fill="none" stroke="var(--foam)" stroke-width="2"/>
-              </svg>
-              <svg class="engine-part part-c" data-part-speed="1.3" data-part-rot="140" viewBox="0 0 40 40">
-                <rect x="12" y="4" width="16" height="22" rx="3" fill="none" stroke="var(--brass-2)" stroke-width="2"/>
-                <line x1="20" y1="26" x2="20" y2="36" stroke="var(--brass-2)" stroke-width="2"/>
-                <line x1="14" y1="36" x2="26" y2="36" stroke="var(--brass-2)" stroke-width="2"/>
-              </svg>
-              <svg class="engine-part part-d" data-part-speed="0.95" data-part-rot="-200" viewBox="0 0 40 40">
-                <circle cx="20" cy="20" r="15" fill="none" stroke="var(--foam)" stroke-width="2"/>
-                <line x1="20" y1="20" x2="27" y2="12" stroke="var(--foam)" stroke-width="2"/>
-                <circle cx="20" cy="20" r="2" fill="var(--foam)"/>
-              </svg>
-            </div>
-            <span class="engine-caption">Scroll to see the block open up — every powertrain is bench-tested before it touches a hull.</span>
-          </div>
-          <div class="config-options">
-            <button class="config-opt selected" data-value="Twin Diesel 900HP">Twin Diesel · 900HP</button>
-            <button class="config-opt" data-value="Hybrid Electric 1200HP">Hybrid Electric · 1200HP</button>
-            <button class="config-opt" data-value="Triple Turbine 2400HP">Triple Turbine · 2400HP</button>
-          </div>
-        </div>
+  scene.add(new THREE.AmbientLight(0x9fb4bd, 0.55));
+  const sun = new THREE.DirectionalLight(0xf7e7c1, 1.15);
+  sun.position.set(6, 8, 4);
+  scene.add(sun);
+  const rim = new THREE.DirectionalLight(0xc9a24b, 0.55);
+  rim.position.set(-6, 3, -4);
+  scene.add(rim);
 
-        <div class="config-group" data-key="interior">
-          <span class="cg-label">Interior</span>
-          <div class="config-options">
-            <button class="config-opt selected" data-value="Alpine Oak">Alpine Oak</button>
-            <button class="config-opt" data-value="Ebony Suede">Ebony Suede</button>
-            <button class="config-opt" data-value="Ivory Marble">Ivory Marble</button>
-          </div>
-        </div>
-
-        <div class="config-group" data-key="color">
-          <span class="cg-label">Exterior Color</span>
-          <div class="config-options">
-            <button class="config-opt swatch selected" data-value="Abyss Navy"><span class="swatch-dot" style="background:#0f2a3a"></span>Abyss Navy</button>
-            <button class="config-opt swatch" data-value="Glacier White"><span class="swatch-dot" style="background:#f4f7f8"></span>Glacier White</button>
-            <button class="config-opt swatch" data-value="Brushed Silver"><span class="swatch-dot" style="background:#b9c2c9"></span>Brushed Silver</button>
-            <button class="config-opt swatch" data-value="Slate Black"><span class="swatch-dot" style="background:#1a1e22"></span>Slate Black</button>
-          </div>
-        </div>
-
-        <div class="config-group" data-key="deck">
-          <span class="cg-label">Deck Material</span>
-          <div class="config-options">
-            <button class="config-opt selected" data-value="Teak">Teak</button>
-            <button class="config-opt" data-value="Carbon Composite">Carbon Composite</button>
-            <button class="config-opt" data-value="Bamboo Weave">Bamboo Weave</button>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="config-summary glass reveal">
-        <h4>Your Configuration</h4>
-        <div class="summary-row"><span>Length</span><span class="sv" id="sum-length">48 ft</span></div>
-        <div class="summary-row"><span>Engine</span><span class="sv" id="sum-engine">Twin Diesel 900HP</span></div>
-        <div class="summary-row"><span>Interior</span><span class="sv" id="sum-interior">Alpine Oak</span></div>
-        <div class="summary-row"><span>Exterior</span><span class="sv" id="sum-color">Abyss Navy</span></div>
-        <div class="summary-row"><span>Deck</span><span class="sv" id="sum-deck">Teak</span></div>
-        <div class="summary-total"><span>Estimated From</span><span class="amt" id="sum-total" data-val="1250000">$1,250,000</span></div>
-        <a href="#contact" class="btn btn-primary">Request This Build</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ ABOUT / CRAFT ============ -->
-<section id="about" class="section">
-  <div class="parallax-blob blob-teal" data-speed="0.2" style="top:5%; left:-4%;"></div>
-  <div class="about-media reveal">
-    <img data-speed="0.12" src="https://images.pexels.com/photos/864895/pexels-photo-864895.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Shipwrights finishing a hull in the Thalassa yard">
-    <div class="caption glass">Hull No. 214 — final fairing, Bay 3</div>
-  </div>
-  <div class="about-text reveal">
-    <div class="eyebrow">Our Craft</div>
-    <h2>Three decades of hulls, laid one at a time.</h2>
-    <p>Thalassa began in a single dry dock with two shipwrights and a belief that a boat's character is set long before it touches water — in the fairing of a hull, the temper of a weld, the grain matched across a saloon table.</p>
-    <p>Today our yard builds fewer than forty vessels a year, by design. Every keel is still laid by hand, every sea trial run by the engineer who specified the systems.</p>
-    <div class="timeline">
-      <div class="t-row"><span class="yr">1994</span><span class="tx">Founded in a single dry dock, three hulls a year.</span></div>
-      <div class="t-row"><span class="yr">2006</span><span class="tx">First carbon-hull performance line launched.</span></div>
-      <div class="t-row"><span class="yr">2015</span><span class="tx">Hybrid propulsion introduced across the fleet.</span></div>
-      <div class="t-row"><span class="yr">2024</span><span class="tx">Aurelia superyacht series debuts at 118 ft.</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SERVICES ============ -->
-<section id="services" class="section">
-  <div class="section-inner">
-    <div class="section-head reveal">
-      <div class="eyebrow">Services</div>
-      <h2>From first sketch to open water.</h2>
-      <p>Every service below is delivered by the same team, so nothing gets lost in translation between the drawing board and the dock.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card glass reveal">
-        <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 21h18M4 21V9l8-5 8 5v12M9 21v-6h6v6"/></svg>
-        <h3>Custom Boat Building</h3>
-        <p>Full-spec vessels built to a blank sheet, from hull design through final commissioning.</p>
-      </div>
-      <div class="service-card glass reveal">
-        <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19l7-14 7 14M7.5 13h7"/></svg>
-        <h3>Yacht Design</h3>
-        <p>Naval architecture and styling that balances hydrodynamics with a silhouette you'll never tire of.</p>
-      </div>
-      <div class="service-card glass reveal">
-        <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.55V21a2 2 0 11-4 0v-.09A1.7 1.7 0 008.5 19.4a1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.7 1.7 0 004.6 15a1.7 1.7 0 00-1.55-1H3a2 2 0 110-4h.09A1.7 1.7 0 004.6 9a1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06A1.7 1.7 0 008.5 4.6a1.7 1.7 0 001-1.55V3a2 2 0 114 0v.09a1.7 1.7 0 001 1.55 1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06A1.7 1.7 0 0019.4 9c.14.36.5 1.55 1.55 1.55H21a2 2 0 110 4h-.09a1.7 1.7 0 00-1.51 1z"/></svg>
-        <h3>Marine Engineering</h3>
-        <p>Propulsion, systems, and structural engineering validated in-house and at sea.</p>
-      </div>
-      <div class="service-card glass reveal">
-        <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-        <h3>Boat Repair &amp; Refurbishment</h3>
-        <p>From mechanical overhauls to full refits that bring an aging hull back to first-day condition.</p>
-      </div>
-      <div class="service-card glass reveal">
-        <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
-        <h3>Yacht Interior Design</h3>
-        <p>Bespoke joinery, material selection, and layout planning for owner's suites and salons.</p>
-      </div>
-      <div class="service-card glass reveal">
-        <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="7" width="15" height="10" rx="2"/><path d="M17 10l5-2v9l-5-2"/></svg>
-        <h3>Performance Upgrades &amp; Export</h3>
-        <p>Propulsion upgrades, tuning, and full logistics for delivery anywhere in the world.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ STATS ============ -->
-<section id="stats" class="section">
-  <div class="parallax-blob blob-brass" data-speed="0.16" style="top:20%; left:8%;"></div>
-  <div class="section-inner">
-    <div class="section-head reveal">
-      <div class="eyebrow">Why Owners Choose Thalassa</div>
-      <h2>Numbers earned in dry docks, not marketing decks.</h2>
-    </div>
-    <div class="stats-grid">
-      <div class="stat reveal"><div class="num" data-target="412">0</div><div class="lbl">Boats Delivered</div></div>
-      <div class="stat reveal"><div class="num" data-target="31">0</div><div class="lbl">Years of Experience</div></div>
-      <div class="stat reveal"><div class="num" data-target="28">0</div><div class="lbl">Countries Served</div></div>
-      <div class="stat reveal"><div class="num" data-target="98" data-suffix="%">0</div><div class="lbl">Customer Satisfaction</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ TESTIMONIALS ============ -->
-<section id="testimonials" class="section">
-  <div class="section-inner">
-    <div class="section-head reveal">
-      <div class="eyebrow">Owners</div>
-      <h2>Told from the deck, not the boardroom.</h2>
-    </div>
-
-    <div class="glass reveal" style="overflow:hidden;">
-      <div class="t-track" id="t-track">
-        <div class="t-card">
-          <img class="t-avatar" src="https://i.pravatar.cc/200?img=12" alt="">
-          <div>
-            <div class="stars">★★★★★</div>
-            <p class="t-quote">The build process felt more like commissioning a piece of furniture than buying a boat — every joint, every seam, considered.</p>
-            <div class="t-name">Marcus Feldt</div>
-            <div class="t-role">Owner, Meridian 92</div>
-          </div>
-        </div>
-        <div class="t-card">
-          <img class="t-avatar" src="https://i.pravatar.cc/200?img=47" alt="">
-          <div>
-            <div class="stars">★★★★★</div>
-            <p class="t-quote">Our Velocis outran everything at the marina and still felt planted at eighty knots. The engineering team simply gets it.</p>
-            <div class="t-name">Renata Cho</div>
-            <div class="t-role">Owner, Velocis GTX</div>
-          </div>
-        </div>
-        <div class="t-card">
-          <img class="t-avatar" src="https://i.pravatar.cc/200?img=33" alt="">
-          <div>
-            <div class="stars">★★★★★</div>
-            <p class="t-quote">Eighteen months from first sketch to sea trial, and the finished Aurelia matched the render almost line for line.</p>
-            <div class="t-name">Idris Okonkwo</div>
-            <div class="t-role">Owner, Aurelia 118</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="t-nav" id="t-dots"></div>
-  </div>
-</section>
-
-<!-- ============ CONTACT ============ -->
-<section id="contact" class="section">
-  <div class="section-inner contact-grid">
-    <div class="contact-info reveal">
-      <div class="eyebrow">Contact</div>
-      <h2>Let's lay the first line of your hull.</h2>
-      <p>Speak with a build advisor about a model in the collection, or start a fully custom commission.</p>
-      <div class="contact-links">
-        <a href="mailto:build@thalassayachts.com"><span class="ic">✉</span>build@thalassayachts.com</a>
-        <a href="tel:+13105550142"><span class="ic">☎</span>+1 (310) 555-0142</a>
-        <a href="#"><span class="ic">◎</span>Chat with us on WhatsApp</a>
-        <a href="#"><span class="ic">⚓</span>4200 Harborview Way, Marina del Rey, CA</a>
-      </div>
-      <div class="social-row">
-        <a href="#" aria-label="Instagram">IG</a>
-        <a href="#" aria-label="YouTube">YT</a>
-        <a href="#" aria-label="LinkedIn">IN</a>
-      </div>
-    </div>
-
-    <form class="contact-form glass reveal" id="contact-form">
-      <div class="field"><label for="cf-name">Full Name</label><input id="cf-name" type="text" required placeholder="Your name"></div>
-      <div class="field"><label for="cf-email">Email</label><input id="cf-email" type="email" required placeholder="you@email.com"></div>
-      <div class="field"><label for="cf-model">Model of Interest</label><input id="cf-model" type="text" placeholder="e.g. Meridian 92, or Custom"></div>
-      <div class="field"><label for="cf-msg">Message</label><textarea id="cf-msg" placeholder="Tell us about the water you sail, and what you're building toward."></textarea></div>
-      <button class="btn btn-primary form-submit" type="submit">Send Enquiry</button>
-      <p class="form-note">A build advisor typically replies within one business day.</p>
-    </form>
-  </div>
-</section>
-
-<!-- ============ FOOTER ============ -->
-<footer>
-  <svg class="wave-divider" viewBox="0 0 1440 110" preserveAspectRatio="none">
-    <path d="M0,60 C 240,110 480,10 720,50 C 960,90 1200,20 1440,55 L1440,0 L0,0 Z" fill="#0b1626"></path>
-    <path d="M0,70 C 240,30 480,100 720,65 C 960,30 1200,90 1440,60" fill="none" stroke="rgba(201,162,75,0.3)" stroke-width="1.5"></path>
-  </svg>
-
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <a href="#hero" class="brand"><span class="dot"></span>THALASSA</a>
-      <p>Custom luxury yachts and performance speed boats, built by hand in Marina del Rey since 1994.</p>
-      <form class="newsletter-row" id="newsletter-form">
-        <input type="email" placeholder="Your email" required>
-        <button type="submit">Subscribe</button>
-      </form>
-    </div>
-    <div class="footer-col">
-      <h5>Explore</h5>
-      <a href="#fleet">Fleet</a>
-      <a href="#configurator">Configurator</a>
-      <a href="#about">Our Craft</a>
-      <a href="#services">Services</a>
-    </div>
-    <div class="footer-col">
-      <h5>Company</h5>
-      <a href="#testimonials">Owners</a>
-      <a href="#contact">Contact</a>
-      <a href="#">Careers</a>
-      <a href="#">Press</a>
-    </div>
-    <div class="footer-col">
-      <h5>Visit the Yard</h5>
-      <a href="#">4200 Harborview Way</a>
-      <a href="#">Marina del Rey, CA 90292</a>
-      <a href="mailto:build@thalassayachts.com">build@thalassayachts.com</a>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <span>© 2026 Thalassa Marine Atelier. All rights reserved.</span>
-    <span>Privacy Policy · Terms of Sale</span>
-  </div>
-</footer>
-
-<!-- Scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="script.js"></script>
-</body>
-</html>
+  const waterGeo = new THREE.PlaneGeometry(60, 60, 120, 120);
+  const waterMat = new THREE.ShaderMaterial({
+    uniforms: {
+      uTime:  { value: 0 },
+      uDeep:  { value: new THREE.Color(0x060c14) },
+      uMid:   { value: new THREE.Color(0x123244) },
+      uGlint: { value: new THREE.Color(0xc9a24b) },
+    },
+    vertexShader: `
+      uniform float uTime;
+      varying float vElevation;
+      void main(){
+        vec3 pos = position;
+        float e = sin(pos.x * 0.5 + uTime * 0.8) * 0.18
