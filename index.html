@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thalassa — Crafting the Future of Luxury on Water</title>
+<meta name="description" content="Thalassa builds custom luxury yachts and high-performance speed boats engineered with precision, innovation, and timeless craftsmanship.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="loader-mark">THALASSA</div>
+  <div class="loader-line"></div>
+</div>
+
+<div id="wake-progress"></div>
+<div id="cursor-glow"></div>
+
+<!-- Nav -->
+<header id="nav">
+  <a href="#hero" class="brand"><span class="dot"></span>THALASSA</a>
+  <nav class="nav-links">
+    <a href="#fleet">Fleet</a>
+    <a href="#configurator">Build</a>
+    <a href="#about">Craft</a>
+    <a href="#services">Services</a>
+    <a href="#testimonials">Owners</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a href="#configurator" class="nav-cta">Build Your Yacht</a>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="hero">
+  <canvas id="ocean-canvas"></canvas>
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Est. Marina del Rey — Custom Marine Atelier</div>
+    <h1>Crafting the future of <em>luxury</em> on water.</h1>
+    <p class="hero-sub">Custom-built yachts and performance speed boats, engineered with precision, innovation, and timeless craftsmanship — for those who measure distance in horizons, not miles.</p>
+    <div class="hero-ctas">
+      <a href="#fleet" class="btn btn-primary">Explore the Fleet</a>
+      <a href="#configurator" class="btn btn-ghost">Build Your Dream Yacht</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
+</section>
+
+<!-- ============ FLEET ============ -->
+<section id="fleet" class="section">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="eyebrow">The Collection</div>
+      <h2>Five disciplines. One obsession with the sea.</h2>
+      <p>Every vessel we lay a hull for begins as a conversation about how you want to feel on the water. Select a category to explore the range.</p>
+    </div>
+
+    <div class="fleet-tabs reveal">
+      <button class="fleet-tab active" data-cat="all">All</button>
+      <button class="fleet-tab" data-cat="Luxury Yachts">Luxury Yachts</button>
+      <button class="fleet-tab" data-cat="Performance">Performance Speed Boats</button>
+      <button class="fleet-tab" data-cat="Fishing">Fishing Boats</button>
+      <button class="fleet-tab" data-cat="Catamarans">Catamarans</button>
+      <button class="fleet-tab" data-cat="Custom">Custom Projects</button>
+    </div>
+
+    <div class="fleet-grid">
+
+      <div class="boat-card reveal" data-cat="Luxury Yachts"
+           data-img="https://picsum.photos/seed/thalassa-yacht-1/1200/1400"
+           data-name="Meridian 92" data-length="92 ft" data-speed="26 kn" data-guests="10 + 4 crew" data-price="$4.8M"
+           data-desc="A full-beam owner's suite, teak decks, and a silhouette drawn to disappear into any sunset. The Meridian 92 is our flagship expression of quiet power.">
+        <div class="bc-img" style="background-image:url('https://picsum.photos/seed/thalassa-yacht-1/1200/1400')"></div>
+        <div class="bc-arrow">↗</div>
+        <div class="bc-content">
+          <span class="bc-tag">Luxury Yachts</span>
+          <h3>Meridian 92</h3>
+          <div class="bc-specs"><span>92 ft</span><span>·</span><span>26 kn</span><span>·</span><span>10 Guests</span></div>
+        </div>
+      </div>
+
+      <div class="boat-card reveal" data-cat="Performance"
+           data-img="https://picsum.photos/seed/thalassa-perf-1/1200/1400"
+           data-name="Velocis GTX" data-length="42 ft" data-speed="82 kn" data-guests="6" data-price="$890K"
+           data-desc="Carbon hull, triple turbine propulsion, and a cockpit built like a cockpit — not a lounge. The Velocis GTX exists to make open water feel small.">
+        <div class="bc-img" style="background-image:url('https://picsum.photos/seed/thalassa-perf-1/1200/1400')"></div>
+        <div class="bc-arrow">↗</div>
+        <div class="bc-content">
+          <span class="bc-tag">Performance</span>
+          <h3>Velocis GTX</h3>
+          <div class="bc-specs"><span>42 ft</span><span>·</span><span>82 kn</span><span>·</span><span>6 Guests</span></div>
+        </div>
+      </div>
+
+      <div class="boat-card reveal" data-cat="Fishing"
+           data-img="https://picsum.photos/seed/thalassa-fish-1/1200/1400"
+           data-name="Marlin 58 Sport" data-length="58 ft" data-speed="38 kn" data-guests="8" data-price="$1.6M"
+           data-desc="Purpose-built for the tournament angler, with a reinforced cockpit, tower helm, and enough range to chase the fleet to the canyon and back.">
+        <div class="bc-img" style="background-image:url('https://picsum.photos/seed/thalassa-fish-1/1200/1400')"></div>
+        <div class="bc-arrow">↗</div>
+        <div class="bc-content">
+          <span class="bc-tag">Fishing Boats</span>
+          <h3>Marlin 58 Sport</h3>
+          <div class="bc-specs"><span>58 ft</span><span>·</span><span>38 kn</span><span>·</span><span>8 Guests</span></div>
+        </div>
+      </div>
+
+      <div class="boat-card reveal" data-cat="Catamarans"
+           data-img="https://picsum.photos/seed/thalassa-cat-1/1200/1400"
+           data-name="Solara 70 Cat" data-length="70 ft" data-speed="22 kn" data-guests="12" data-price="$2.3M"
+           data-desc="Twin-hull stability meets villa-scale living space. The Solara 70 trades nothing for its calm ride and everything for its view.">
+        <div class="bc-img" style="background-image:url('https://picsum.photos/seed/thalassa-cat-1/1200/1400')"></div>
+        <div class="bc-arrow">↗</div>
+        <div class="bc-content">
+          <span class="bc-tag">Catamarans</span>
+          <h3>Solara 70 Cat</h3>
+          <div class="bc-specs"><span>70 ft</span><span>·</span><span>22 kn</span><span>·</span><span>12 Guests</span></div>
+        </div>
+      </div>
+
+      <div class="boat-card reveal" data-cat="Luxury Yachts"
+           data-img="https://picsum.photos/seed/thalassa-yacht-2/1200/1400"
+           data-name="Aurelia 118" data-length="118 ft" data-speed="24 kn" data-guests="12 + 6 crew" data-price="$9.4M"
+           data-desc="A three-deck superyacht with a fold-out beach club and infinity-edge pool deck. The Aurelia 118 is a private island that happens to move.">
+        <div class="bc-img" style="background-image:url('https://picsum.photos/seed/thalassa-yacht-2/1200/1400')"></div>
+        <div class="bc-arrow">↗</div>
+        <div class="bc-content">
+          <span class="bc-tag">Luxury Yachts</span>
+          <h3>Aurelia 118</h3>
+          <div class="bc-specs"><span>118 ft</span><span>·</span><span>24 kn</span><span>·</span><span>12 Guests</span></div>
+        </div>
+      </div>
+
+      <div class="boat-card reveal" data-cat="Custom"
+           data-img="https://picsum.photos/seed/thalassa-custom-1/1200/1400"
+           data-name="Bespoke Commission" data-length="Your Spec" data-speed="Your Spec" data-guests="Your Spec" data-price="On Request"
+           data-desc="Some clients don't want a model — they want a hull number one. Our custom division designs and builds from a blank sheet, in partnership with your team.">
+        <div class="bc-img" style="background-image:url('https://picsum.photos/seed/thalassa-custom-1/1200/1400')"></div>
+        <div class="bc-arrow">↗</div>
+        <div class="bc-content">
+          <span class="bc-tag">Custom Projects</span>
+          <h3>Bespoke Commission</h3>
+          <div class="bc-specs"><span>Fully Custom</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Boat Modal -->
+<div id="boat-modal">
+  <div class="modal-backdrop" data-close-modal></div>
+  <div class="modal-card glass">
+    <button class="modal-close" data-close-modal>✕</button>
+    <div class="modal-img"></div>
+    <div class="modal-info">
+      <span class="bc-tag"></span>
+      <h3></h3>
+      <p class="modal-desc"></p>
+      <div class="modal-specs"></div>
+      <a href="#contact" class="btn btn-primary" data-close-modal>Enquire About This Vessel</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CONFIGURATOR ============ -->
+<section id="configurator" class="section">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="eyebrow">Build Your Dream Yacht</div>
+      <h2>Configure a Meridian, your way.</h2>
+      <p>Every option below shapes the final specification and estimate. A designer will refine it with you before any keel is laid.</p>
+    </div>
+
+    <div class="config-grid">
+      <div class="config-form reveal">
+
+        <div class="config-group" data-key="length">
+          <span class="cg-label">Hull Length</span>
+          <div class="config-options">
+            <button class="config-opt selected" data-value="48">48 ft</button>
+            <button class="config-opt" data-value="62">62 ft</button>
+            <button class="config-opt" data-value="78">78 ft</button>
+            <button class="config-opt" data-value="95">95 ft</button>
+          </div>
+        </div>
+
+        <div class="config-group" data-key="engine">
+          <span class="cg-label">Engine</span>
+          <div class="config-options">
+            <button class="config-opt selected" data-value="Twin Diesel 900HP">Twin Diesel · 900HP</button>
+            <button class="config-opt" data-value="Hybrid Electric 1200HP">Hybrid Electric · 1200HP</button>
+            <button class="config-opt" data-value="Triple Turbine 2400HP">Triple Turbine · 2400HP</button>
+          </div>
+        </div>
+
+        <div class="config-group" data-key="interior">
+          <span class="cg-label">Interior</span>
+          <div class="config-options">
+            <button class="config-opt selected" data-value="Alpine Oak">Alpine Oak</button>
+            <button class="config-opt" data-value="Ebony Suede">Ebony Suede</button>
+            <button class="config-opt" data-value="Ivory Marble">Ivory Marble</button>
+          </div>
+        </div>
+
+        <div class="config-group" data-key="color">
+          <span class="cg-label">Exterior Color</span>
+          <div class="config-options">
+            <button class="config-opt swatch selected" data-value="Abyss Navy"><span class="swatch-dot" style="background:#0f2a3a"></span>Abyss Navy</button>
+            <button class="config-opt swatch" data-value="Glacier White"><span class="swatch-dot" style="background:#f4f7f8"></span>Glacier White</button>
+            <button class="config-opt swatch" data-value="Brushed Silver"><span class="swatch-dot" style="background:#b9c2c9"></span>Brushed Silver</button>
+            <button class="config-opt swatch" data-value="Slate Black"><span class="swatch-dot" style="background:#1a1e22"></span>Slate Black</button>
+          </div>
+        </div>
+
+        <div class="config-group" data-key="deck">
+          <span class="cg-label">Deck Material</span>
+          <div class="config-options">
+            <button class="config-opt selected" data-value="Teak">Teak</button>
+            <button class="config-opt" data-value="Carbon Composite">Carbon Composite</button>
+            <button class="config-opt" data-value="Bamboo Weave">Bamboo Weave</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="config-summary glass reveal">
+        <h4>Your Configuration</h4>
+        <div class="summary-row"><span>Length</span><span class="sv" id="sum-length">48 ft</span></div>
+        <div class="summary-row"><span>Engine</span><span class="sv" id="sum-engine">Twin Diesel 900HP</span></div>
+        <div class="summary-row"><span>Interior</span><span class="sv" id="sum-interior">Alpine Oak</span></div>
+        <div class="summary-row"><span>Exterior</span><span class="sv" id="sum-color">Abyss Navy</span></div>
+        <div class="summary-row"><span>Deck</span><span class="sv" id="sum-deck">Teak</span></div>
+        <div class="summary-total"><span>Estimated From</span><span class="amt" id="sum-total" data-val="1250000">$1,250,000</span></div>
+        <a href="#contact" class="btn btn-primary">Request This Build</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT / CRAFT ============ -->
+<section id="about" class="section">
+  <div class="about-media reveal">
+    <img src="https://picsum.photos/seed/thalassa-craft-1/900/1100" alt="Shipwrights finishing a hull in the Thalassa yard">
+    <div class="caption glass">Hull No. 214 — final fairing, Bay 3</div>
+  </div>
+  <div class="about-text reveal">
+    <div class="eyebrow">Our Craft</div>
+    <h2>Three decades of hulls, laid one at a time.</h2>
+    <p>Thalassa began in a single dry dock with two shipwrights and a belief that a boat's character is set long before it touches water — in the fairing of a hull, the temper of a weld, the grain matched across a saloon table.</p>
+    <p>Today our yard builds fewer than forty vessels a year, by design. Every keel is still laid by hand, every sea trial run by the engineer who specified the systems.</p>
+    <div class="timeline">
+      <div class="t-row"><span class="yr">1994</span><span class="tx">Founded in a single dry dock, three hulls a year.</span></div>
+      <div class="t-row"><span class="yr">2006</span><span class="tx">First carbon-hull performance line launched.</span></div>
+      <div class="t-row"><span class="yr">2015</span><span class="tx">Hybrid propulsion introduced across the fleet.</span></div>
+      <div class="t-row"><span class="yr">2024</span><span class="tx">Aurelia superyacht series debuts at 118 ft.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" class="section">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="eyebrow">Services</div>
+      <h2>From first sketch to open water.</h2>
+      <p>Every service below is delivered by the same team, so nothing gets lost in translation between the drawing board and the dock.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card glass reveal">
+        <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 21h18M4 21V9l8-5 8 5v12M9 21v-6h6v6"/></svg>
+        <h3>Custom Boat Building</h3>
+        <p>Full-spec vessels built to a blank sheet, from hull design through final commissioning.</p>
+      </div>
+      <div class="service-card glass reveal">
+        <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19l7-14 7 14M7.5 13h7"/></svg>
+        <h3>Yacht Design</h3>
+        <p>Naval architecture and styling that balances hydrodynamics with a silhouette you'll never tire of.</p>
+      </div>
+      <div class="service-card glass reveal">
+        <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.55V21a2 2 0 11-4 0v-.09A1.7 1.7 0 008.5 19.4a1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.7 1.7 0 004.6 15a1.7 1.7 0 00-1.55-1H3a2 2 0 110-4h.09A1.7 1.7 0 004.6 9a1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06A1.7 1.7 0 008.5 4.6a1.7 1.7 0 001-1.55V3a2 2 0 114 0v.09a1.7 1.7 0 001 1.55 1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06A1.7 1.7 0 0019.4 9c.14.36.5 1.55 1.55 1.55H21a2 2 0 110 4h-.09a1.7 1.7 0 00-1.51 1z"/></svg>
+        <h3>Marine Engineering</h3>
+        <p>Propulsion, systems, and structural engineering validated in-house and at sea.</p>
+      </div>
+      <div class="service-card glass reveal">
+        <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        <h3>Boat Repair &amp; Refurbishment</h3>
+        <p>From mechanical overhauls to full refits that bring an aging hull back to first-day condition.</p>
+      </div>
+      <div class="service-card glass reveal">
+        <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        <h3>Yacht Interior Design</h3>
+        <p>Bespoke joinery, material selection, and layout planning for owner's suites and salons.</p>
+      </div>
+      <div class="service-card glass reveal">
+        <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="7" width="15" height="10" rx="2"/><path d="M17 10l5-2v9l-5-2"/></svg>
+        <h3>Performance Upgrades &amp; Export</h3>
+        <p>Propulsion upgrades, tuning, and full logistics for delivery anywhere in the world.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section id="stats" class="section">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="eyebrow">Why Owners Choose Thalassa</div>
+      <h2>Numbers earned in dry docks, not marketing decks.</h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat reveal"><div class="num" data-target="412">0</div><div class="lbl">Boats Delivered</div></div>
+      <div class="stat reveal"><div class="num" data-target="31">0</div><div class="lbl">Years of Experience</div></div>
+      <div class="stat reveal"><div class="num" data-target="28">0</div><div class="lbl">Countries Served</div></div>
+      <div class="stat reveal"><div class="num" data-target="98" data-suffix="%">0</div><div class="lbl">Customer Satisfaction</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section id="testimonials" class="section">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="eyebrow">Owners</div>
+      <h2>Told from the deck, not the boardroom.</h2>
+    </div>
+
+    <div class="glass reveal" style="overflow:hidden;">
+      <div class="t-track" id="t-track">
+        <div class="t-card">
+          <img class="t-avatar" src="https://picsum.photos/seed/thalassa-owner-1/200/200" alt="">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="t-quote">The build process felt more like commissioning a piece of furniture than buying a boat — every joint, every seam, considered.</p>
+            <div class="t-name">Marcus Feldt</div>
+            <div class="t-role">Owner, Meridian 92</div>
+          </div>
+        </div>
+        <div class="t-card">
+          <img class="t-avatar" src="https://picsum.photos/seed/thalassa-owner-2/200/200" alt="">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="t-quote">Our Velocis outran everything at the marina and still felt planted at eighty knots. The engineering team simply gets it.</p>
+            <div class="t-name">Renata Cho</div>
+            <div class="t-role">Owner, Velocis GTX</div>
+          </div>
+        </div>
+        <div class="t-card">
+          <img class="t-avatar" src="https://picsum.photos/seed/thalassa-owner-3/200/200" alt="">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="t-quote">Eighteen months from first sketch to sea trial, and the finished Aurelia matched the render almost line for line.</p>
+            <div class="t-name">Idris Okonkwo</div>
+            <div class="t-role">Owner, Aurelia 118</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="t-nav" id="t-dots"></div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="section">
+  <div class="section-inner contact-grid">
+    <div class="contact-info reveal">
+      <div class="eyebrow">Contact</div>
+      <h2>Let's lay the first line of your hull.</h2>
+      <p>Speak with a build advisor about a model in the collection, or start a fully custom commission.</p>
+      <div class="contact-links">
+        <a href="mailto:build@thalassayachts.com"><span class="ic">✉</span>build@thalassayachts.com</a>
+        <a href="tel:+13105550142"><span class="ic">☎</span>+1 (310) 555-0142</a>
+        <a href="#"><span class="ic">◎</span>Chat with us on WhatsApp</a>
+        <a href="#"><span class="ic">⚓</span>4200 Harborview Way, Marina del Rey, CA</a>
+      </div>
+      <div class="social-row">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="YouTube">YT</a>
+        <a href="#" aria-label="LinkedIn">IN</a>
+      </div>
+    </div>
+
+    <form class="contact-form glass reveal" id="contact-form">
+      <div class="field"><label for="cf-name">Full Name</label><input id="cf-name" type="text" required placeholder="Your name"></div>
+      <div class="field"><label for="cf-email">Email</label><input id="cf-email" type="email" required placeholder="you@email.com"></div>
+      <div class="field"><label for="cf-model">Model of Interest</label><input id="cf-model" type="text" placeholder="e.g. Meridian 92, or Custom"></div>
+      <div class="field"><label for="cf-msg">Message</label><textarea id="cf-msg" placeholder="Tell us about the water you sail, and what you're building toward."></textarea></div>
+      <button class="btn btn-primary form-submit" type="submit">Send Enquiry</button>
+      <p class="form-note">A build advisor typically replies within one business day.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <svg class="wave-divider" viewBox="0 0 1440 110" preserveAspectRatio="none">
+    <path d="M0,60 C 240,110 480,10 720,50 C 960,90 1200,20 1440,55 L1440,0 L0,0 Z" fill="#0b1626"></path>
+    <path d="M0,70 C 240,30 480,100 720,65 C 960,30 1200,90 1440,60" fill="none" stroke="rgba(201,162,75,0.3)" stroke-width="1.5"></path>
+  </svg>
+
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#hero" class="brand"><span class="dot"></span>THALASSA</a>
+      <p>Custom luxury yachts and performance speed boats, built by hand in Marina del Rey since 1994.</p>
+      <form class="newsletter-row" id="newsletter-form">
+        <input type="email" placeholder="Your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    <div class="footer-col">
+      <h5>Explore</h5>
+      <a href="#fleet">Fleet</a>
+      <a href="#configurator">Configurator</a>
+      <a href="#about">Our Craft</a>
+      <a href="#services">Services</a>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="#testimonials">Owners</a>
+      <a href="#contact">Contact</a>
+      <a href="#">Careers</a>
+      <a href="#">Press</a>
+    </div>
+    <div class="footer-col">
+      <h5>Visit the Yard</h5>
+      <a href="#">4200 Harborview Way</a>
+      <a href="#">Marina del Rey, CA 90292</a>
+      <a href="mailto:build@thalassayachts.com">build@thalassayachts.com</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 Thalassa Marine Atelier. All rights reserved.</span>
+    <span>Privacy Policy · Terms of Sale</span>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
