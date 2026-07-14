@@ -60,14 +60,37 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Hero parallax on scroll
-    gsap.to('#ocean-canvas', {
-      yPercent: 18, ease: 'none',
-      scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
-    });
   } else {
     document.querySelectorAll('.reveal').forEach(el => { el.style.opacity = 1; el.style.transform = 'none'; });
   }
+
+  /* ---------- Real scroll parallax engine ----------
+     Every element with a data-speed attribute drifts vertically at its own
+     rate relative to normal scroll, giving genuine depth (background blobs
+     move slowest, hero video/canvas mid, foreground images fastest). */
+  const parallaxEls = [...document.querySelectorAll('[data-speed]')].map(el => ({
+    el, speed: parseFloat(el.dataset.speed) || 0.1
+  }));
+
+  let ticking = false;
+  function updateParallax(){
+    const vh = window.innerHeight;
+    const sy = window.scrollY || window.pageYOffset;
+    parallaxEls.forEach(({ el, speed }) => {
+      const rect = el.getBoundingClientRect();
+      const elCenter = rect.top + sy + rect.height / 2;
+      const dist = (sy + vh / 2) - elCenter; // how far viewport center is from element center
+      const offset = dist * speed * 0.12;
+      el.style.transform = `translate3d(0, ${offset}px, 0)`;
+    });
+    ticking = false;
+  }
+  function onParallaxScroll(){
+    if (!ticking){ requestAnimationFrame(updateParallax); ticking = true; }
+  }
+  document.addEventListener('scroll', onParallaxScroll, { passive: true });
+  window.addEventListener('resize', onParallaxScroll);
+  updateParallax();
 
   /* ---------- Mouse parallax on hero content ---------- */
   const heroContent = document.querySelector('.hero-content');

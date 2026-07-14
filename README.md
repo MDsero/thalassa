@@ -25,6 +25,16 @@ No build step needed — it's plain HTML/CSS/JS.
 - Fonts: Fraunces (display) + Inter (body) via Google Fonts
 - Libraries loaded via CDN: GSAP + ScrollTrigger, Lenis smooth scroll — no npm install required
 
+## Update: real background video + real parallax
+The hero now plays an actual looping ocean video (`assets.mixkit.co/videos/51502/51502-720.mp4`,
+free for commercial use under the Mixkit Stock Video Free License — swap it for your own
+licensed 4K drone footage of your fleet when you have it, in `index.html` under `#hero-video`).
+On top of that, every element carrying a `data-speed="…"` attribute (the hero video, the
+canvas wave layer, the soft brass/teal glow blobs behind several sections, and the craftsmanship
+photo in "Our Craft") now genuinely drifts at its own rate as you scroll — that's the parallax
+engine in `script.js` (`updateParallax()`), not a CSS trick. Slower speed = moves less = feels
+further away; faster speed = moves more = feels closer.
+
 ## Design notes
 - Palette: abyss navy, midnight teal, brass/gold accent, foam white, silver — a
   Rolls‑Royce-meets-marine-craft palette instead of the generic "ocean blue" gradient.

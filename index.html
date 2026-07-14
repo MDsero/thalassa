@@ -39,7 +39,11 @@
 
 <!-- ============ HERO ============ -->
 <section id="hero">
-  <canvas id="ocean-canvas"></canvas>
+  <video id="hero-video" data-speed="0.25" autoplay muted loop playsinline preload="auto"
+         poster="https://picsum.photos/seed/thalassa-hero/1920/1080">
+    <source src="https://assets.mixkit.co/videos/51502/51502-720.mp4" type="video/mp4">
+  </video>
+  <canvas id="ocean-canvas" data-speed="0.15"></canvas>
   <div class="hero-scrim"></div>
   <div class="hero-content">
     <div class="eyebrow">Est. Marina del Rey — Custom Marine Atelier</div>
@@ -55,6 +59,8 @@
 
 <!-- ============ FLEET ============ -->
 <section id="fleet" class="section">
+  <div class="parallax-blob blob-brass" data-speed="0.18"></div>
+  <div class="parallax-blob blob-teal" data-speed="0.32"></div>
   <div class="section-inner">
     <div class="section-head reveal">
       <div class="eyebrow">The Collection</div>
@@ -173,6 +179,7 @@
 
 <!-- ============ CONFIGURATOR ============ -->
 <section id="configurator" class="section">
+  <div class="parallax-blob blob-brass" data-speed="0.22" style="top:10%; right:6%;"></div>
   <div class="section-inner">
     <div class="section-head reveal">
       <div class="eyebrow">Build Your Dream Yacht</div>
@@ -248,8 +255,9 @@
 
 <!-- ============ ABOUT / CRAFT ============ -->
 <section id="about" class="section">
+  <div class="parallax-blob blob-teal" data-speed="0.2" style="top:5%; left:-4%;"></div>
   <div class="about-media reveal">
-    <img src="https://picsum.photos/seed/thalassa-craft-1/900/1100" alt="Shipwrights finishing a hull in the Thalassa yard">
+    <img data-speed="0.12" src="https://picsum.photos/seed/thalassa-craft-1/900/1100" alt="Shipwrights finishing a hull in the Thalassa yard">
     <div class="caption glass">Hull No. 214 — final fairing, Bay 3</div>
   </div>
   <div class="about-text reveal">
@@ -311,6 +319,7 @@
 
 <!-- ============ STATS ============ -->
 <section id="stats" class="section">
+  <div class="parallax-blob blob-brass" data-speed="0.16" style="top:20%; left:8%;"></div>
   <div class="section-inner">
     <div class="section-head reveal">
       <div class="eyebrow">Why Owners Choose Thalassa</div>
