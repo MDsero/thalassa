@@ -75,12 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let ticking = false;
   function updateParallax(){
     const vh = window.innerHeight;
-    const sy = window.scrollY || window.pageYOffset;
     parallaxEls.forEach(({ el, speed }) => {
       const rect = el.getBoundingClientRect();
-      const elCenter = rect.top + sy + rect.height / 2;
-      const dist = (sy + vh / 2) - elCenter; // how far viewport center is from element center
-      const offset = dist * speed * 0.12;
+      const elCenter = rect.top + rect.height / 2;
+      const distFromCenter = (vh / 2) - elCenter; // + when element is below center, - when above
+      const offset = distFromCenter * speed;
       el.style.transform = `translate3d(0, ${offset}px, 0)`;
     });
     ticking = false;
@@ -91,6 +90,53 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('scroll', onParallaxScroll, { passive: true });
   window.addEventListener('resize', onParallaxScroll);
   updateParallax();
+
+  /* ---------- 3D exploded-view engine (scroll-driven) ----------
+     As the engine visual approaches the center of the viewport, its
+     four parts assemble into the block and it settles into a gentle
+     rotation; scroll away and it drifts apart again. */
+  const engine3d = document.getElementById('engine3d');
+  if (engine3d) {
+    const core = engine3d.querySelector('.engine-core');
+    const parts = [...engine3d.querySelectorAll('.engine-part')];
+    const targets = {
+      'part-a': { x: -92, y: -74 },
+      'part-b': { x: 92, y: -70 },
+      'part-c': { x: -90, y: 78 },
+      'part-d': { x: 90, y: 82 }
+    };
+    let engineTicking = false;
+
+    function updateEngine(){
+      const rect = engine3d.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const centerDist = (rect.top + rect.height / 2) - vh / 2;
+      const threshold = vh * 0.7;
+      const progress = Math.max(0, 1 - Math.abs(centerDist) / threshold); // 1 = centered/assembled
+
+      const rotY = Math.max(-28, Math.min(28, centerDist * -0.045));
+      const rotX = Math.max(-8, Math.min(8, centerDist * 0.014));
+      core.style.transform = `rotateY(${rotY}deg) rotateX(${rotX}deg) scale(${0.92 + progress * 0.08})`;
+
+      parts.forEach(p => {
+        const key = [...p.classList].find(c => c.startsWith('part-'));
+        const t = targets[key] || { x: 0, y: 0 };
+        const spread = 1 - progress; // 1 = fully exploded, 0 = assembled
+        const rotDeg = (parseFloat(p.dataset.partRot) || 0) * spread;
+        const x = t.x * spread, y = t.y * spread;
+        p.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${rotDeg}deg) scale(${0.55 + progress * 0.55})`;
+        p.style.opacity = 0.32 + progress * 0.68;
+      });
+
+      engineTicking = false;
+    }
+    function onEngineScroll(){
+      if (!engineTicking){ requestAnimationFrame(updateEngine); engineTicking = true; }
+    }
+    document.addEventListener('scroll', onEngineScroll, { passive: true });
+    window.addEventListener('resize', onEngineScroll);
+    updateEngine();
+  }
 
   /* ---------- Mouse parallax on hero content ---------- */
   const heroContent = document.querySelector('.hero-content');
